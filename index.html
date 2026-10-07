@@ -209,25 +209,77 @@ body {
 
 /* IMAGEM */
 
-.convite-imagem {
+.convite-visual {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-
-    min-height: 430px;
+    justify-content: center;
 }
 
-.convite-imagem img {
+.celular {
+    position: relative;
+    width: 270px;
+    height: 540px;
+    background: #111;
+    border: 7px solid #171717;
+    border-radius: 38px;
+    padding: 8px;
+    box-shadow: 0 18px 40px rgba(30, 50, 70, 0.20);
+}
+
+.tela {
     width: 100%;
-    max-width: 350px;
-    max-height: 520px;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 29px;
+    background: #f5f5f5;
+    position: relative;
+}
 
-    object-fit: contain;
-
-    border-radius: 18px;
-
+.tela img,
+.tela video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
 }
+
+.camera {
+    position: absolute;
+    z-index: 5;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 72px;
+    height: 20px;
+    background: #050505;
+    border-radius: 20px;
+}
+
+.visual-botoes {
+    display: flex;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.visual-btn {
+    border: 1px solid var(--borda);
+    background: white;
+    color: var(--azul);
+    border-radius: 25px;
+    padding: 9px 16px;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.visual-btn.ativo {
+    background: var(--azul);
+    color: white;
+    border-color: var(--azul);
+        }
 
 /* INFORMAÇÕES */
 
