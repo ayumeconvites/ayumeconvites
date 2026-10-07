@@ -1,189 +1,756 @@
-<!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ayume Convites | Catálogo</title>  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    body {
-      font-family: Georgia, 'Times New Roman', serif;
-      background: #f8f5f0;
-      color: #292722;
-    }
+<title>Ayume Convites</title>
 
-    header {
-      text-align: center;
-      padding: 45px 20px 30px;
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --azul: #527eac;
+    --azul-claro: #a9bfd2;
+    --fundo: #fbfaf6;
+    --texto: #52708f;
+    --borda: #a9bfd2;
+    --branco: #ffffff;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: var(--fundo);
+    color: var(--texto);
+}
+
+/* =========================
+   PÁGINA INICIAL
+========================= */
+
+.home {
+    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 5vh 7vw;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 4vh;
+}
+
+.logo h1 {
+    font-size: clamp(54px, 12vw, 92px);
+    font-weight: 400;
+    letter-spacing: -2px;
+    color: var(--azul);
+    line-height: 0.95;
+}
+
+.logo span {
+    display: block;
+    margin-top: 14px;
+
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    letter-spacing: 9px;
+    text-transform: lowercase;
+
+    color: var(--azul);
+}
+
+/* LISTA */
+
+.categorias {
+    width: min(560px, 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.categoria {
+    width: 100%;
+    min-height: 66px;
+
+    border: 1px solid var(--borda);
+    border-radius: 18px;
+
+    background: rgba(255,255,255,0.5);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px 22px;
+
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+
+    color: var(--azul);
+
+    cursor: pointer;
+    transition: all .25s ease;
+}
+
+.categoria:hover {
+    transform: translateY(-2px);
+    background: white;
+}
+
+.categoria.whatsapp {
+    background: var(--azul);
+    color: white;
+    border-color: var(--azul);
+}
+
+.categoria.whatsapp:hover {
+    background: #456f9b;
+}
+
+/* =========================
+   CATÁLOGO
+========================= */
+
+.catalogo {
+    display: none;
+    min-height: 100vh;
+    padding: 35px 5vw 60px;
+}
+
+.catalogo.ativo {
+    display: block;
+}
+
+.voltar {
+    border: none;
+    background: transparent;
+
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    color: var(--azul);
+
+    cursor: pointer;
+
+    margin-bottom: 55px;
+}
+
+.cabecalho-catalogo {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 45px;
+}
+
+.cabecalho-catalogo .categoria-titulo {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+
+    color: var(--azul);
+    margin-bottom: 16px;
+}
+
+.cabecalho-catalogo h2 {
+    font-size: clamp(40px, 6vw, 62px);
+    font-weight: 400;
+    color: var(--azul);
+    margin-bottom: 16px;
+}
+
+.cabecalho-catalogo p {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #71869b;
+}
+
+/* =========================
+   CARD DO CONVITE
+========================= */
+
+.lista-convites {
+    max-width: 1100px;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.convite-card {
+    background: rgba(255,255,255,0.7);
+
+    border: 1px solid #e1e4e1;
+    border-radius: 28px;
+
+    padding: 28px;
+
+    display: grid;
+    grid-template-columns: minmax(260px, 42%) 1fr;
+    gap: 45px;
+
+    box-shadow: 0 10px 35px rgba(50,70,90,0.06);
+}
+
+/* IMAGEM */
+
+.convite-imagem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 430px;
+}
+
+.convite-imagem img {
+    width: 100%;
+    max-width: 350px;
+    max-height: 520px;
+
+    object-fit: contain;
+
+    border-radius: 18px;
+
+    display: block;
+}
+
+/* INFORMAÇÕES */
+
+.convite-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.etiqueta {
+    display: inline-block;
+
+    width: fit-content;
+
+    background: #edf2f5;
+    color: var(--azul);
+
+    padding: 9px 17px;
+    border-radius: 30px;
+
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    margin-bottom: 20px;
+}
+
+.convite-info h3 {
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 400;
+    color: var(--azul);
+
+    margin-bottom: 25px;
+}
+
+.recursos {
+    border-top: 1px solid #dce2e5;
+    border-bottom: 1px solid #dce2e5;
+
+    padding: 22px 0;
+
+    margin-bottom: 25px;
+}
+
+.recursos p {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    color: #667c90;
+
+    margin: 11px 0;
+}
+
+.recursos p::before {
+    content: "✓";
+    margin-right: 12px;
+    color: var(--azul);
+    font-weight: bold;
+}
+
+/* BOTÃO */
+
+.escolher {
+    width: 100%;
+
+    border: none;
+    border-radius: 40px;
+
+    background: var(--azul);
+    color: white;
+
+    padding: 17px 25px;
+
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition: .25s;
+}
+
+.escolher:hover {
+    background: #456f9b;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .home {
+        padding: 6vh 8vw;
     }
 
     .logo {
-      font-size: 42px;
-      letter-spacing: 5px;
-      font-weight: normal;
+        margin-bottom: 4vh;
     }
 
-    .subtitle {
-      font-family: Arial, sans-serif;
-      font-size: 13px;
-      letter-spacing: 5px;
-      margin-top: 8px;
-      text-transform: uppercase;
-      color: #77716a;
+    .logo h1 {
+        font-size: 58px;
     }
 
-    .categories {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      padding: 10px 20px 40px;
+    .logo span {
+        font-size: 13px;
+        letter-spacing: 7px;
     }
 
-    .category {
-      border: 1px solid #cfc7bc;
-      background: transparent;
-      padding: 11px 18px;
-      border-radius: 30px;
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-      cursor: pointer;
+    .categorias {
+        gap: 11px;
     }
 
-    .category:hover {
-      background: #e8e1d7;
+    .categoria {
+        min-height: 58px;
+        font-size: 16px;
+        border-radius: 17px;
     }
 
-    .catalog {
-      max-width: 1050px;
-      margin: auto;
-      padding: 0 25px 60px;
+    .catalogo {
+        padding: 25px 18px 45px;
     }
 
-    .invitation {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      align-items: center;
-      margin-bottom: 70px;
+    .voltar {
+        margin-bottom: 35px;
     }
 
-    .invitation img {
-      width: 100%;
-      max-width: 480px;
-      display: block;
-      margin: auto;
-      border-radius: 4px;
+    .cabecalho-catalogo {
+        margin-bottom: 30px;
     }
 
-    .info {
-      padding: 20px;
+    .cabecalho-catalogo .categoria-titulo {
+        font-size: 10px;
+        letter-spacing: 3px;
     }
 
-    .info small {
-      font-family: Arial, sans-serif;
-      color: #9a8f82;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-size: 11px;
+    .cabecalho-catalogo h2 {
+        font-size: 38px;
     }
 
-    .info h2 {
-      font-size: 32px;
-      font-weight: normal;
-      margin: 12px 0 18px;
+    .cabecalho-catalogo p {
+        font-size: 14px;
     }
 
-    .info p {
-      font-family: Arial, sans-serif;
-      color: #66615b;
-      line-height: 1.7;
-      font-size: 14px;
-      margin-bottom: 25px;
+    .convite-card {
+        grid-template-columns: 43% 57%;
+        gap: 15px;
+        padding: 15px;
+        border-radius: 22px;
     }
 
-    .choose {
-      display: inline-block;
-      padding: 14px 25px;
-      background: #292722;
-      color: white;
-      text-decoration: none;
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-      letter-spacing: 1px;
-      border-radius: 2px;
+    .convite-imagem {
+        min-height: 360px;
     }
 
-    .choose:hover {
-      opacity: 0.85;
+    .convite-imagem img {
+        max-height: 390px;
     }
 
-    footer {
-      text-align: center;
-      padding: 35px 20px;
-      border-top: 1px solid #ddd5cb;
-      font-family: Arial, sans-serif;
-      color: #8a837b;
-      font-size: 12px;
+    .convite-info {
+        padding-right: 5px;
     }
 
-    @media (max-width: 700px) {
-      .logo {
-        font-size: 34px;
-      }
-
-      .invitation {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-
-      .info {
-        padding: 10px 5px 30px;
-      }
-
-      .info h2 {
-        font-size: 27px;
-      }
+    .etiqueta {
+        font-size: 8px;
+        padding: 7px 9px;
+        margin-bottom: 12px;
     }
-  </style></head><body>  <header>
-    <div class="logo">AYUME</div>
-    <div class="subtitle">Convites</div>
-  </header>  <nav class="categories">
-    <button class="category">WhatsApp</button>
-    <button class="category">Infantil Menina</button>
-    <button class="category">Infantil Menino</button>
-    <button class="category">15 Anos</button>
-    <button class="category">Save the Date</button>
-  </nav>  <main class="catalog"><section class="invitation">
 
-  <div>
-    <img src="Homem Aranha _20261001_180828_0000.png"
-     alt="Convite Homem Aranha">
-  </div>
+    .convite-info h3 {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
 
-  <div class="info">
-    <small>Infantil • 1 ano</small>
+    .recursos {
+        padding: 12px 0;
+        margin-bottom: 15px;
+    }
 
-    <h2>Jardim Encantado</h2>
+    .recursos p {
+        font-size: 11px;
+        margin: 8px 0;
+    }
 
-    <p>
-      Um convite delicado e encantador criado para celebrar
-      momentos especiais com beleza e personalidade.
-    </p>
+    .recursos p::before {
+        margin-right: 6px;
+    }
 
-    <a class="choose"
-       href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20escolher%20o%20convite%20Jardim%20Encantado."
-       target="_blank">
-      ESCOLHER ESSE CONVITE
-    </a>
-  </div>
+    .escolher {
+        font-size: 10px;
+        padding: 13px 8px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- =========================
+     PÁGINA INICIAL
+========================= -->
+
+<section class="home" id="home">
+
+    <div class="logo">
+
+        <h1>Ayume</h1>
+
+        <span>convites</span>
+
+    </div>
+
+
+    <div class="categorias">
+
+        <button
+            class="categoria whatsapp"
+            onclick="abrirWhatsAppGeral()">
+            Fale comigo pelo WhatsApp
+        </button>
+
+
+        <button
+            class="categoria"
+            onclick="abrirCatalogo('menina')">
+            Catálogo Infantil Menina
+        </button>
+
+
+        <button
+            class="categoria"
+            onclick="abrirCatalogo('menino')">
+            Catálogo Infantil Menino
+        </button>
+
+
+        <button
+            class="categoria"
+            onclick="abrirCatalogo('15anos')">
+            Catálogo 15 anos
+        </button>
+
+
+        <button
+            class="categoria"
+            onclick="abrirCatalogo('adulto')">
+            Catálogo Adulto
+        </button>
+
+
+        <button
+            class="categoria"
+            onclick="abrirCatalogo('fotos')">
+            Álbum de Fotos
+        </button>
+
+
+        <button
+            class="categoria"
+            onclick="abrirCatalogo('save')">
+            Catálogo Save The Date
+        </button>
+
+    </div>
 
 </section>
 
-  </main>  <footer>
-    Ayume Convites
-  </footer></body>
-</html>
+
+
+<!-- =========================
+     CATÁLOGO
+========================= -->
+
+<section class="catalogo" id="catalogo">
+
+    <button class="voltar" onclick="voltarCategorias()">
+        ← &nbsp; VOLTAR ÀS CATEGORIAS
+    </button>
+
+
+    <div class="cabecalho-catalogo">
+
+        <div
+            class="categoria-titulo"
+            id="tituloCategoria">
+            CATÁLOGO • INFANTIL MENINO
+        </div>
+
+
+        <h2>
+            Escolha seu convite
+        </h2>
+
+
+        <p>
+            Conheça os modelos disponíveis e escolha
+            a experiência que mais combina com esse
+            momento tão especial.
+        </p>
+
+    </div>
+
+
+    <div class="lista-convites">
+
+
+        <!-- CONVITE HOMEM ARANHA -->
+
+        <div
+            class="convite-card"
+            data-categoria="menino">
+
+            <div class="convite-imagem">
+
+                <img
+                    src="Homem Aranha _20261001_180828_0000.png"
+                    alt="Convite Homem Aranha">
+
+            </div>
+
+
+            <div class="convite-info">
+
+                <span class="etiqueta">
+                    CONVITE INTERATIVO
+                </span>
+
+
+                <h3>
+                    Homem-Aranha
+                </h3>
+
+
+                <div class="recursos">
+
+                    <p>
+                        Design personalizado
+                    </p>
+
+                    <p>
+                        Informações do evento
+                    </p>
+
+                    <p>
+                        Botões interativos
+                    </p>
+
+                    <p>
+                        Foto na capa opcional
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="escolher"
+                    onclick="escolherConvite('Homem-Aranha')">
+
+                    ESCOLHER ESSE CONVITE
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<script>
+
+/* =========================
+   CONFIGURAÇÃO
+========================= */
+
+/*
+   Depois vamos colocar aqui
+   o número oficial do WhatsApp.
+
+   Formato:
+   5516999999999
+*/
+
+const WHATSAPP = "SEUNUMERO";
+
+
+/* =========================
+   ABRIR WHATSAPP
+========================= */
+
+function abrirWhatsAppGeral() {
+
+    const mensagem =
+        "Olá! Gostaria de conhecer os convites da Ayume.";
+
+    window.open(
+        "https://wa.me/" +
+        WHATSAPP +
+        "?text=" +
+        encodeURIComponent(mensagem),
+        "_blank"
+    );
+}
+
+
+/* =========================
+   ESCOLHER CONVITE
+========================= */
+
+function escolherConvite(nome) {
+
+    const mensagem =
+        "Olá! Gostaria de escolher o convite " +
+        nome +
+        " da Ayume Convites.";
+
+    window.open(
+        "https://wa.me/" +
+        WHATSAPP +
+        "?text=" +
+        encodeURIComponent(mensagem),
+        "_blank"
+    );
+}
+
+
+/* =========================
+   ABRIR CATÁLOGO
+========================= */
+
+function abrirCatalogo(categoria) {
+
+    document.getElementById("home").style.display = "none";
+
+    const catalogo =
+        document.getElementById("catalogo");
+
+    catalogo.classList.add("ativo");
+
+    const titulo =
+        document.getElementById("tituloCategoria");
+
+
+    const nomes = {
+
+        menina:
+            "CATÁLOGO • INFANTIL MENINA",
+
+        menino:
+            "CATÁLOGO • INFANTIL MENINO",
+
+        "15anos":
+            "CATÁLOGO • 15 ANOS",
+
+        adulto:
+            "CATÁLOGO • ADULTO",
+
+        fotos:
+            "ÁLBUM DE FOTOS",
+
+        save:
+            "CATÁLOGO • SAVE THE DATE"
+
+    };
+
+
+    titulo.textContent =
+        nomes[categoria] ||
+        "CATÁLOGO • AYUME CONVITES";
+
+
+    /* Mostra somente os convites daquela categoria */
+
+    const convites =
+        document.querySelectorAll(".convite-card");
+
+
+    convites.forEach(function(convite) {
+
+        if (
+            convite.dataset.categoria === categoria
+        ) {
+
+            convite.style.display = "grid";
+
+        } else {
+
+            convite.style.display = "none";
+
+        }
+
+    });
+
+
+    window.scrollTo(0, 0);
+}
+
+
+/* =========================
+   VOLTAR
+========================= */
+
+function voltarCategorias() {
+
+    document.getElementById("catalogo")
+        .classList.remove("ativo");
+
+    document.getElementById("home")
+        .style.display = "flex";
+
+    window.scrollTo(0, 0);
+}
+
+</script>
+
+</body>
+  </html>
