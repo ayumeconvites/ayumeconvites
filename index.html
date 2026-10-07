@@ -716,7 +716,30 @@ const WHATSAPP = "SEUNUMERO";
 /* =========================
    ABRIR WHATSAPP
 ========================= */
+function mostrarImagem() {
 
+    document.getElementById("imagemConvite").style.display = "block";
+
+    document.getElementById("videoConvite").style.display = "none";
+
+    document.querySelectorAll(".visual-btn")[0].classList.add("ativo");
+
+    document.querySelectorAll(".visual-btn")[1].classList.remove("ativo");
+
+    document.getElementById("videoConvite").pause();
+}
+
+
+function mostrarVideo() {
+
+    document.getElementById("imagemConvite").style.display = "none";
+
+    document.getElementById("videoConvite").style.display = "block";
+
+    document.querySelectorAll(".visual-btn")[0].classList.remove("ativo");
+
+    document.querySelectorAll(".visual-btn")[1].classList.add("ativo");
+    }
 function abrirWhatsAppGeral() {
 
     const mensagem =
