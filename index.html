@@ -545,11 +545,49 @@ body {
             class="convite-card"
             data-categoria="menino">
 
-            <div class="convite-imagem">
+            <div class="convite-visual">
 
-                <img
-                    src="Homem Aranha _20261001_180828_0000.png"
-                    alt="Convite Homem Aranha">
+    <div class="celular">
+
+        <div class="camera"></div>
+
+        <div class="tela">
+
+            <img
+                id="imagemConvite"
+                src="Homem Aranha _20261001_180828_0000.png"
+                alt="Convite Homem Aranha">
+
+            <video
+                id="videoConvite"
+                controls
+                playsinline
+                style="display:none;">
+                <source
+                    src="homem-aranha.mp4"
+                    type="video/mp4">
+            </video>
+
+        </div>
+
+    </div>
+
+
+    <div class="visual-botoes">
+
+        <button
+            class="visual-btn ativo"
+            onclick="mostrarImagem()">
+            IMAGEM
+        </button>
+
+        <button
+            class="visual-btn"
+            onclick="mostrarVideo()">
+            ▶ VÍDEO
+        </button>
+
+    </div>
 
             </div>
 
